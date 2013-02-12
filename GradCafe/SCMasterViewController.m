@@ -16,30 +16,31 @@
 @end
 
 @implementation SCMasterViewController
+@synthesize searchBar = _searchBar ;
 
--(void)loadTutorials {
-    // 1
+-(void)loadTutorials:(NSString*) string {
+
     int count =0;
-    NSURL *url = [NSURL URLWithString:@"http://www.thegradcafe.com/survey"];
+    NSURL *url = [NSURL URLWithString:string];
     NSData *resultsHtmlData = [NSData dataWithContentsOfURL:url];
-     NSLog([NSString stringWithUTF8String:[resultsHtmlData bytes] ] );
-    // 2
+     //NSLog([NSString stringWithUTF8String:[resultsHtmlData bytes] ] );
+
     TFHpple *resultsParser = [TFHpple hppleWithHTMLData:resultsHtmlData];
     
-    // 3
+
     NSString *resultXpathQueryString = @"//table[@class='results']/tr/td[@class = 'instcol']";
     NSArray *resultsNodes = [resultsParser searchWithXPathQuery:resultXpathQueryString];
     
-    // 4
+
     NSMutableArray *newResults = [[NSMutableArray alloc] initWithCapacity:0];
     for (TFHppleElement *element in resultsNodes) {
-        // 5
+
        GCResult  *result = [[GCResult alloc] initWithUniversity:[[element firstChild] content] andDecision:nil];
         [newResults addObject:result];
         count += 1;
     }
-    // 8
-    NSLog(@"%i", count);
+  
+    //NSLog(@"%i", count);
     _objects = newResults;
     [self.tableView reloadData];
 }
@@ -61,7 +62,7 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
-    [self loadTutorials];
+    [self loadTutorials: @"http://www.thegradcafe.com/survey"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,7 +90,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return _objects.count+1;
 }
 
 // Customize the appearance of table view cells.
@@ -102,7 +103,14 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-        GCResult *object = _objects[indexPath.row];
+    if ([indexPath indexAtPosition:0] == 0 && indexPath.row == 0) {
+        static NSString *CellIdentifier = @"SearchCell";
+        UITableViewCell *searchBarCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        _searchBar = [[UISearchBar alloc] initWithFrame:searchBarCell.frame];
+        [searchBarCell addSubview:_searchBar];
+        return searchBarCell;
+    } // ...
+        GCResult *object = _objects[indexPath.row-1];
         cell.textLabel.text = object.university;
     
 
@@ -148,7 +156,7 @@
     if (!self.detailViewController) {
         self.detailViewController = [[SCDetailViewController alloc] initWithNibName:@"SCDetailViewController" bundle:nil];
     }
-    NSDate *object = _objects[indexPath.row];
+    NSDate *object = _objects[indexPath.row-1];
     self.detailViewController.detailItem = object;
     [self.navigationController pushViewController:self.detailViewController animated:YES];
 }

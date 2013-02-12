@@ -12,8 +12,8 @@
 
 @class SCDetailViewController;
 
-@interface SCMasterViewController : UITableViewController
+@interface SCMasterViewController : UITableViewController<UISearchBarDelegate>
 
 @property (strong, nonatomic) SCDetailViewController *detailViewController;
-
+@property (strong, nonatomic) UISearchBar *searchBar;
 @end
