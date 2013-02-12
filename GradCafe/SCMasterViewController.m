@@ -17,6 +17,33 @@
 
 @implementation SCMasterViewController
 
+-(void)loadTutorials {
+    // 1
+    int count =0;
+    NSURL *url = [NSURL URLWithString:@"http://www.thegradcafe.com/survey"];
+    NSData *resultsHtmlData = [NSData dataWithContentsOfURL:url];
+     NSLog([NSString stringWithUTF8String:[resultsHtmlData bytes] ] );
+    // 2
+    TFHpple *resultsParser = [TFHpple hppleWithHTMLData:resultsHtmlData];
+    
+    // 3
+    NSString *resultXpathQueryString = @"//table[@class='results']/tr/td[@class = 'instcol']";
+    NSArray *resultsNodes = [resultsParser searchWithXPathQuery:resultXpathQueryString];
+    
+    // 4
+    NSMutableArray *newResults = [[NSMutableArray alloc] initWithCapacity:0];
+    for (TFHppleElement *element in resultsNodes) {
+        // 5
+       GCResult  *result = [[GCResult alloc] initWithUniversity:[[element firstChild] content] andDecision:nil];
+        [newResults addObject:result];
+        count += 1;
+    }
+    // 8
+    NSLog(@"%i", count);
+    _objects = newResults;
+    [self.tableView reloadData];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -34,6 +61,7 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    [self loadTutorials];
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,10 +102,11 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
+        GCResult *object = _objects[indexPath.row];
+        cell.textLabel.text = object.university;
+    
 
-
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    
     return cell;
 }
 
@@ -115,6 +144,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
     if (!self.detailViewController) {
         self.detailViewController = [[SCDetailViewController alloc] initWithNibName:@"SCDetailViewController" bundle:nil];
     }

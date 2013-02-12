@@ -7,7 +7,7 @@
 //
 
 #import "SCDetailViewController.h"
-
+#import "GCResult.h"
 @interface SCDetailViewController ()
 - (void)configureView;
 @end
@@ -31,7 +31,8 @@
     // Update the user interface for the detail item.
 
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+        GCResult *result = self.detailItem;
+        self.detailDescriptionLabel.text = [result university];
     }
 }
 

@@ -20,6 +20,11 @@
 		089BF7FD16CA094800F5854D /* SCDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 089BF7FC16CA094800F5854D /* SCDetailViewController.m */; };
 		089BF80016CA094800F5854D /* SCMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089BF7FE16CA094800F5854D /* SCMasterViewController.xib */; };
 		089BF80316CA094800F5854D /* SCDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089BF80116CA094800F5854D /* SCDetailViewController.xib */; };
+		089BF80C16CA09D200F5854D /* GCResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 089BF80B16CA09D200F5854D /* GCResult.m */; };
+		089BF81416CA0D0D00F5854D /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 089BF80F16CA0D0D00F5854D /* TFHpple.m */; };
+		089BF81516CA0D0D00F5854D /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 089BF81116CA0D0D00F5854D /* TFHppleElement.m */; };
+		089BF81616CA0D0D00F5854D /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 089BF81316CA0D0D00F5854D /* XPathQuery.m */; };
+		089BF81816CA0DDD00F5854D /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 089BF81716CA0DDD00F5854D /* libxml2.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +47,15 @@
 		089BF7FC16CA094800F5854D /* SCDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCDetailViewController.m; sourceTree = "<group>"; };
 		089BF7FF16CA094800F5854D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SCMasterViewController.xib; sourceTree = "<group>"; };
 		089BF80216CA094800F5854D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SCDetailViewController.xib; sourceTree = "<group>"; };
+		089BF80A16CA09D200F5854D /* GCResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCResult.h; sourceTree = "<group>"; };
+		089BF80B16CA09D200F5854D /* GCResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCResult.m; sourceTree = "<group>"; };
+		089BF80E16CA0D0D00F5854D /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
+		089BF80F16CA0D0D00F5854D /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
+		089BF81016CA0D0D00F5854D /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
+		089BF81116CA0D0D00F5854D /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
+		089BF81216CA0D0D00F5854D /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		089BF81316CA0D0D00F5854D /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
+		089BF81716CA0DDD00F5854D /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				089BF81816CA0DDD00F5854D /* libxml2.dylib in Frameworks */,
 				089BF7E116CA094800F5854D /* UIKit.framework in Frameworks */,
 				089BF7E316CA094800F5854D /* Foundation.framework in Frameworks */,
 				089BF7E516CA094800F5854D /* CoreGraphics.framework in Frameworks */,
@@ -61,6 +76,7 @@
 		089BF7D416CA094700F5854D = {
 			isa = PBXGroup;
 			children = (
+				089BF81716CA0DDD00F5854D /* libxml2.dylib */,
 				089BF7E616CA094800F5854D /* GradCafe */,
 				089BF7DF16CA094800F5854D /* Frameworks */,
 				089BF7DE16CA094800F5854D /* Products */,
@@ -88,6 +104,8 @@
 		089BF7E616CA094800F5854D /* GradCafe */ = {
 			isa = PBXGroup;
 			children = (
+				089BF80D16CA0CC200F5854D /* HTMLParsing */,
+				089BF80916CA098200F5854D /* Results Entry */,
 				089BF7EF16CA094800F5854D /* SCAppDelegate.h */,
 				089BF7F016CA094800F5854D /* SCAppDelegate.m */,
 				089BF7F816CA094800F5854D /* SCMasterViewController.h */,
@@ -113,6 +131,28 @@
 				089BF7F616CA094800F5854D /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		089BF80916CA098200F5854D /* Results Entry */ = {
+			isa = PBXGroup;
+			children = (
+				089BF80A16CA09D200F5854D /* GCResult.h */,
+				089BF80B16CA09D200F5854D /* GCResult.m */,
+			);
+			name = "Results Entry";
+			sourceTree = "<group>";
+		};
+		089BF80D16CA0CC200F5854D /* HTMLParsing */ = {
+			isa = PBXGroup;
+			children = (
+				089BF80E16CA0D0D00F5854D /* TFHpple.h */,
+				089BF80F16CA0D0D00F5854D /* TFHpple.m */,
+				089BF81016CA0D0D00F5854D /* TFHppleElement.h */,
+				089BF81116CA0D0D00F5854D /* TFHppleElement.m */,
+				089BF81216CA0D0D00F5854D /* XPathQuery.h */,
+				089BF81316CA0D0D00F5854D /* XPathQuery.m */,
+			);
+			name = HTMLParsing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +227,10 @@
 				089BF7F116CA094800F5854D /* SCAppDelegate.m in Sources */,
 				089BF7FA16CA094800F5854D /* SCMasterViewController.m in Sources */,
 				089BF7FD16CA094800F5854D /* SCDetailViewController.m in Sources */,
+				089BF80C16CA09D200F5854D /* GCResult.m in Sources */,
+				089BF81416CA0D0D00F5854D /* TFHpple.m in Sources */,
+				089BF81516CA0D0D00F5854D /* TFHppleElement.m in Sources */,
+				089BF81616CA0D0D00F5854D /* XPathQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +289,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -269,6 +314,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
