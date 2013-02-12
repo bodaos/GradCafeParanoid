@@ -16,17 +16,23 @@
 @end
 
 @implementation SCMasterViewController
-@synthesize searchBar = _searchBar ;
+@synthesize searchBar = _searchBar, searchKey = _searchKey;
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
 }
-
+#pragma mark SearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
-    NSString *searchURL = [NSString stringWithFormat:@"http://www.thegradcafe.com/survey/index.php?q=%@", [searchBar text]];
-    NSLog([searchBar text]);
+    _searchKey = [[searchBar text] stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    NSString *searchURL = [NSString stringWithFormat:@"http://www.thegradcafe.com/survey/index.php?q=%@",_searchKey];
+    //NSLog([searchBar text]);
     [self loadTutorials:searchURL];
+    [searchBar setPlaceholder:_searchKey];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    _searchKey = searchText;
 }
 
 -(void)loadTutorials:(NSString*) string {
@@ -58,6 +64,7 @@
     //NSLog(@"%i", count);
     _objects = newResults;
     [self.tableView reloadData];
+    
 }
 
 
@@ -89,8 +96,8 @@
 
 - (void)refreshTable:(id)sender
 {
-    if ([_searchBar text]) {
-        [self loadTutorials:[NSString stringWithFormat:@"http://www.thegradcafe.com/survey/index.php?q=%@", [_searchBar text]]];
+    if (_searchKey) {
+        [self loadTutorials:[NSString stringWithFormat:@"http://www.thegradcafe.com/survey/index.php?q=%@",_searchKey]];
     }else{
         [self loadTutorials:@"http://www.thegradcafe.com/survey/"];
     }
@@ -124,7 +131,11 @@
         _searchBar = [[UISearchBar alloc] initWithFrame:searchBarCell.frame];
         _searchBar.showsCancelButton = YES;
         _searchBar.delegate = self;
+        if (_searchKey) {
+            [_searchBar setPlaceholder:_searchKey];
+        }
         [searchBarCell addSubview:_searchBar];
+
         return searchBarCell;
     } // ...
         GCResult *object = _objects[indexPath.row-1];

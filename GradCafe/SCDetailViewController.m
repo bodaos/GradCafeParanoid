@@ -33,6 +33,9 @@
     if (self.detailItem) {
         GCResult *result = self.detailItem;
         self.detailDescriptionLabel.text = [result university];
+        self.decisionLabel.text = [result decision];
+        self.interactionLabel.text = [result interaction];
+        self.fieldLabel.text = [result field];
     }
 }
 

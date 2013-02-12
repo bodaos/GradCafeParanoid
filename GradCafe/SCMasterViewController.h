@@ -16,4 +16,5 @@
 
 @property (strong, nonatomic) SCDetailViewController *detailViewController;
 @property (strong, nonatomic) UISearchBar *searchBar;
+@property (strong, nonatomic) NSString *searchKey;
 @end
