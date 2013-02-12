@@ -18,6 +18,17 @@
 @implementation SCMasterViewController
 @synthesize searchBar = _searchBar ;
 
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+    NSString *searchURL = [NSString stringWithFormat:@"http://www.thegradcafe.com/survey/index.php?q=%@", [searchBar text]];
+    NSLog([searchBar text]);
+    [self loadTutorials:searchURL];
+}
+
 -(void)loadTutorials:(NSString*) string {
 
     int count =0;
@@ -28,14 +39,18 @@
     TFHpple *resultsParser = [TFHpple hppleWithHTMLData:resultsHtmlData];
     
 
-    NSString *resultXpathQueryString = @"//table[@class='results']/tr/td[@class = 'instcol']";
+    NSString *resultXpathQueryString = @"//table[@class='results']/tr";
     NSArray *resultsNodes = [resultsParser searchWithXPathQuery:resultXpathQueryString];
     
 
     NSMutableArray *newResults = [[NSMutableArray alloc] initWithCapacity:0];
     for (TFHppleElement *element in resultsNodes) {
 
-       GCResult  *result = [[GCResult alloc] initWithUniversity:[[element firstChild] content] andDecision:nil];
+       GCResult  *result = [[GCResult alloc] initWithUniversity:[[element firstChild] text] andDecision:nil];
+        result.field = [[element childAtIndex:1] text];
+        result.decision = [[[element childAtIndex:2] childAtIndex:0 ] text];
+        result.interaction = [[element childAtIndex:2] text] ;
+        NSLog(@"%@", result.interaction );
         [newResults addObject:result];
         count += 1;
     }
@@ -44,6 +59,7 @@
     _objects = newResults;
     [self.tableView reloadData];
 }
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,9 +76,9 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
-    [self loadTutorials: @"http://www.thegradcafe.com/survey"];
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshTable:)];
+    self.navigationItem.rightBarButtonItem = refreshButton;
+    [self loadTutorials: @"http://www.thegradcafe.com/survey/"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,14 +87,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)insertNewObject:(id)sender
+- (void)refreshTable:(id)sender
 {
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
+    if ([_searchBar text]) {
+        [self loadTutorials:[NSString stringWithFormat:@"http://www.thegradcafe.com/survey/index.php?q=%@", [_searchBar text]]];
+    }else{
+        [self loadTutorials:@"http://www.thegradcafe.com/survey/"];
     }
-    [_objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Table View
@@ -103,10 +118,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    if ([indexPath indexAtPosition:0] == 0 && indexPath.row == 0) {
+    if (indexPath.row == 0) {//[indexPath indexAtPosition:0] == 0 && 
         static NSString *CellIdentifier = @"SearchCell";
         UITableViewCell *searchBarCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         _searchBar = [[UISearchBar alloc] initWithFrame:searchBarCell.frame];
+        _searchBar.showsCancelButton = YES;
+        _searchBar.delegate = self;
         [searchBarCell addSubview:_searchBar];
         return searchBarCell;
     } // ...
@@ -121,7 +138,7 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

@@ -9,7 +9,7 @@
 #import "GCResult.h"
 
 @implementation GCResult
-@synthesize university= _university, decision = _decision;
+@synthesize university= _university, decision = _decision, field = _field, interaction = _interaction;
 
 
 -(id) initWithUniversity: (NSString*) university andDecision: (NSString*) decision;{

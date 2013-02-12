@@ -11,6 +11,8 @@
 @interface GCResult : NSObject
 @property (nonatomic, copy) NSString *university;
 @property (nonatomic, copy) NSString *decision;
+@property (nonatomic, copy) NSString *field;
+@property (nonatomic, copy) NSString *interaction;
 
 -(id) initWithUniversity: (NSString*) university andDecision: (NSString*) decision;
 @end

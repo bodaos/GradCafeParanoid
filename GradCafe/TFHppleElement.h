@@ -99,5 +99,7 @@
 // Returns the string contained by the first text node from this element's children
 // Convenience method which can be used instead of firstTextChild.content
 - (NSString *) text;
+// Returns the i th child of the node
+- (TFHppleElement *) childAtIndex: (int) index;
 
 @end

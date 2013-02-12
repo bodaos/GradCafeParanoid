@@ -92,6 +92,14 @@ static NSString * const TFHppleTextNodeName            = @"text";
   return nil;
 }
 
+- (TFHppleElement *) childAtIndex: (int) index
+{
+    NSArray * children = self.children;
+    if (children.count >= index)
+        return [children objectAtIndex:index];
+    NSLog(@"second child method called in a array of length less than 2");
+    return nil;
+}
 
 - (NSDictionary *) attributes
 {
