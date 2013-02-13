@@ -19,7 +19,9 @@
 @synthesize searchBar = _searchBar, searchKey = _searchKey;
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
-    [searchBar resignFirstResponder];
+    if (searchBar.isFirstResponder) {
+        [searchBar resignFirstResponder];
+    }
 }
 #pragma mark SearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
@@ -56,7 +58,7 @@
         result.field = [[element childAtIndex:1] text];
         result.decision = [[[element childAtIndex:2] childAtIndex:0 ] text];
         result.interaction = [[element childAtIndex:2] text] ;
-        NSLog(@"%@", result.interaction );
+        //NSLog(@"%@", result.interaction );
         [newResults addObject:result];
         count += 1;
     }
@@ -81,10 +83,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshTable:)];
-    self.navigationItem.rightBarButtonItem = refreshButton;
+    self.navigationItem.leftBarButtonItem = refreshButton;
     [self loadTutorials: @"http://www.thegradcafe.com/survey/"];
 }
 
@@ -116,13 +118,30 @@
 }
 
 // Customize the appearance of table view cells.
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    //NSLog(@"The row is %d", indexPath.row);
+    if (indexPath.row !=0) {
+        GCResult *object = _objects[indexPath.row-1];
+        if ([object.decision isEqualToString:@"Accepted"]) {
+            cell.detailTextLabel.backgroundColor = [UIColor colorWithRed:152.0/255 green:251.0/255 blue:152.0/255 alpha:0.5];
+            //NSLog(@"accepted");
+        }
+        if ([object.decision isEqualToString:@"Rejected"]) {
+            cell.detailTextLabel.backgroundColor = [UIColor colorWithRed:255.0/255 green:182.0/255 blue:193.0/255 alpha:0.5];
+            //NSLog(@"accepted");
+        }
+        cell.detailTextLabel.textColor = [UIColor blackColor];
+
+    }
+   
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     if (indexPath.row == 0) {//[indexPath indexAtPosition:0] == 0 && 
@@ -138,12 +157,10 @@
 
         return searchBarCell;
     } // ...
-        GCResult *object = _objects[indexPath.row-1];
-        cell.textLabel.text = object.university;
-    
-
-    
-    return cell;
+    GCResult *object = _objects[indexPath.row-1];
+    cell.textLabel.text = object.university;
+    cell.detailTextLabel.text = object.field;
+        return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -180,13 +197,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row !=0) {
+        if (!self.detailViewController) {
+            self.detailViewController = [[SCDetailViewController alloc] initWithNibName:@"SCDetailViewController" bundle:nil];
+        }
+        GCResult *object = _objects[indexPath.row-1];
+        self.detailViewController.detailItem = object;
+        [self.navigationController pushViewController:self.detailViewController animated:YES];
 
-    if (!self.detailViewController) {
-        self.detailViewController = [[SCDetailViewController alloc] initWithNibName:@"SCDetailViewController" bundle:nil];
     }
-    NSDate *object = _objects[indexPath.row-1];
-    self.detailViewController.detailItem = object;
-    [self.navigationController pushViewController:self.detailViewController animated:YES];
-}
+    }
 
 @end
