@@ -14,6 +14,7 @@
 
 @interface SCMasterViewController : UITableViewController<UISearchBarDelegate, EGORefreshTableHeaderDelegate>{
     BOOL reloading;
+    int count;
 }
 
 @property (strong, nonatomic) SCDetailViewController *detailViewController;

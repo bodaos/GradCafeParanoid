@@ -32,6 +32,7 @@
     //NSLog([searchBar text]);
     [self loadTutorials:searchURL];
     [searchBar setPlaceholder:_searchKey];
+    [self.tableView reloadData];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
