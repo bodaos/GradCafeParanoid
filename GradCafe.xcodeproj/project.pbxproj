@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0864959D16CC9FDB0074CA77 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0864959216CC9FDB0074CA77 /* blackArrow.png */; };
+		0864959E16CC9FDB0074CA77 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0864959316CC9FDB0074CA77 /* blackArrow@2x.png */; };
+		0864959F16CC9FDB0074CA77 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0864959416CC9FDB0074CA77 /* blueArrow.png */; };
+		086495A016CC9FDB0074CA77 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0864959516CC9FDB0074CA77 /* blueArrow@2x.png */; };
+		086495A116CC9FDB0074CA77 /* grayArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0864959616CC9FDB0074CA77 /* grayArrow.png */; };
+		086495A216CC9FDB0074CA77 /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0864959716CC9FDB0074CA77 /* grayArrow@2x.png */; };
+		086495A316CC9FDB0074CA77 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0864959816CC9FDB0074CA77 /* MainWindow.xib */; };
+		086495A416CC9FDB0074CA77 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0864959916CC9FDB0074CA77 /* RootViewController.xib */; };
+		086495A516CC9FDB0074CA77 /* TableViewPull-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0864959A16CC9FDB0074CA77 /* TableViewPull-Info.plist */; };
+		086495A616CC9FDB0074CA77 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0864959B16CC9FDB0074CA77 /* whiteArrow.png */; };
+		086495A716CC9FDB0074CA77 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0864959C16CC9FDB0074CA77 /* whiteArrow@2x.png */; };
+		086495AC16CC9FEB0074CA77 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 086495AB16CC9FEB0074CA77 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
+		086495AE16CCA5A20074CA77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086495AD16CCA5A20074CA77 /* QuartzCore.framework */; };
 		089BF7E116CA094800F5854D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089BF7E016CA094800F5854D /* UIKit.framework */; };
 		089BF7E316CA094800F5854D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089BF7E216CA094800F5854D /* Foundation.framework */; };
 		089BF7E516CA094800F5854D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089BF7E416CA094800F5854D /* CoreGraphics.framework */; };
@@ -28,6 +41,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0864959216CC9FDB0074CA77 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
+		0864959316CC9FDB0074CA77 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
+		0864959416CC9FDB0074CA77 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
+		0864959516CC9FDB0074CA77 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
+		0864959616CC9FDB0074CA77 /* grayArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayArrow.png; sourceTree = "<group>"; };
+		0864959716CC9FDB0074CA77 /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
+		0864959816CC9FDB0074CA77 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		0864959916CC9FDB0074CA77 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		0864959A16CC9FDB0074CA77 /* TableViewPull-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TableViewPull-Info.plist"; sourceTree = "<group>"; };
+		0864959B16CC9FDB0074CA77 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
+		0864959C16CC9FDB0074CA77 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
+		086495AA16CC9FEB0074CA77 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		086495AB16CC9FEB0074CA77 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		086495AD16CCA5A20074CA77 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		089BF7DD16CA094800F5854D /* GradCafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GradCafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		089BF7E016CA094800F5854D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		089BF7E216CA094800F5854D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -63,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				086495AE16CCA5A20074CA77 /* QuartzCore.framework in Frameworks */,
 				089BF81816CA0DDD00F5854D /* libxml2.dylib in Frameworks */,
 				089BF7E116CA094800F5854D /* UIKit.framework in Frameworks */,
 				089BF7E316CA094800F5854D /* Foundation.framework in Frameworks */,
@@ -73,6 +101,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0864959116CC9FDB0074CA77 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0864959216CC9FDB0074CA77 /* blackArrow.png */,
+				0864959316CC9FDB0074CA77 /* blackArrow@2x.png */,
+				0864959416CC9FDB0074CA77 /* blueArrow.png */,
+				0864959516CC9FDB0074CA77 /* blueArrow@2x.png */,
+				0864959616CC9FDB0074CA77 /* grayArrow.png */,
+				0864959716CC9FDB0074CA77 /* grayArrow@2x.png */,
+				0864959816CC9FDB0074CA77 /* MainWindow.xib */,
+				0864959916CC9FDB0074CA77 /* RootViewController.xib */,
+				0864959A16CC9FDB0074CA77 /* TableViewPull-Info.plist */,
+				0864959B16CC9FDB0074CA77 /* whiteArrow.png */,
+				0864959C16CC9FDB0074CA77 /* whiteArrow@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		086495A816CC9FEB0074CA77 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				086495A916CC9FEB0074CA77 /* RefreshTableHeaderView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		086495A916CC9FEB0074CA77 /* RefreshTableHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				086495AA16CC9FEB0074CA77 /* EGORefreshTableHeaderView.h */,
+				086495AB16CC9FEB0074CA77 /* EGORefreshTableHeaderView.m */,
+			);
+			path = RefreshTableHeaderView;
+			sourceTree = "<group>";
+		};
 		089BF7D416CA094700F5854D = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +157,7 @@
 		089BF7DF16CA094800F5854D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				086495AD16CCA5A20074CA77 /* QuartzCore.framework */,
 				089BF7E016CA094800F5854D /* UIKit.framework */,
 				089BF7E216CA094800F5854D /* Foundation.framework */,
 				089BF7E416CA094800F5854D /* CoreGraphics.framework */,
@@ -104,6 +168,7 @@
 		089BF7E616CA094800F5854D /* GradCafe */ = {
 			isa = PBXGroup;
 			children = (
+				086495A816CC9FEB0074CA77 /* View */,
 				089BF80D16CA0CC200F5854D /* HTMLParsing */,
 				089BF80916CA098200F5854D /* Results Entry */,
 				089BF7EF16CA094800F5854D /* SCAppDelegate.h */,
@@ -114,6 +179,7 @@
 				089BF7FC16CA094800F5854D /* SCDetailViewController.m */,
 				089BF7FE16CA094800F5854D /* SCMasterViewController.xib */,
 				089BF80116CA094800F5854D /* SCDetailViewController.xib */,
+				0864959116CC9FDB0074CA77 /* Resources */,
 				089BF7E716CA094800F5854D /* Supporting Files */,
 			);
 			path = GradCafe;
@@ -213,6 +279,17 @@
 				089BF7F716CA094800F5854D /* Default-568h@2x.png in Resources */,
 				089BF80016CA094800F5854D /* SCMasterViewController.xib in Resources */,
 				089BF80316CA094800F5854D /* SCDetailViewController.xib in Resources */,
+				0864959D16CC9FDB0074CA77 /* blackArrow.png in Resources */,
+				0864959E16CC9FDB0074CA77 /* blackArrow@2x.png in Resources */,
+				0864959F16CC9FDB0074CA77 /* blueArrow.png in Resources */,
+				086495A016CC9FDB0074CA77 /* blueArrow@2x.png in Resources */,
+				086495A116CC9FDB0074CA77 /* grayArrow.png in Resources */,
+				086495A216CC9FDB0074CA77 /* grayArrow@2x.png in Resources */,
+				086495A316CC9FDB0074CA77 /* MainWindow.xib in Resources */,
+				086495A416CC9FDB0074CA77 /* RootViewController.xib in Resources */,
+				086495A516CC9FDB0074CA77 /* TableViewPull-Info.plist in Resources */,
+				086495A616CC9FDB0074CA77 /* whiteArrow.png in Resources */,
+				086495A716CC9FDB0074CA77 /* whiteArrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +308,7 @@
 				089BF81416CA0D0D00F5854D /* TFHpple.m in Sources */,
 				089BF81516CA0D0D00F5854D /* TFHppleElement.m in Sources */,
 				089BF81616CA0D0D00F5854D /* XPathQuery.m in Sources */,
+				086495AC16CC9FEB0074CA77 /* EGORefreshTableHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +441,7 @@
 				089BF80816CA094800F5854D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

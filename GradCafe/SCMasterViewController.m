@@ -17,6 +17,7 @@
 
 @implementation SCMasterViewController
 @synthesize searchBar = _searchBar, searchKey = _searchKey;
+@synthesize refreshHeaderView = _refreshHeaderView;
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     if (searchBar.isFirstResponder) {
@@ -36,6 +37,8 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     _searchKey = searchText;
 }
+
+#pragma mark Loading data
 
 -(void)loadTutorials:(NSString*) string {
 
@@ -65,7 +68,7 @@
   
     //NSLog(@"%i", count);
     _objects = newResults;
-    [self.tableView reloadData];
+   
     
 }
 
@@ -84,10 +87,15 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     //self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
+    self.title = @"GradCafe Paranoid";
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshTable:)];
     self.navigationItem.leftBarButtonItem = refreshButton;
+    EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+    view.delegate = self;
+    [self.tableView addSubview:view];
+    _refreshHeaderView = view;
     [self loadTutorials: @"http://www.thegradcafe.com/survey/"];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -100,8 +108,10 @@
 {
     if (_searchKey) {
         [self loadTutorials:[NSString stringWithFormat:@"http://www.thegradcafe.com/survey/index.php?q=%@",_searchKey]];
+         [self.tableView reloadData];
     }else{
         [self loadTutorials:@"http://www.thegradcafe.com/survey/"];
+        [self.tableView reloadData];
     }
 }
 
@@ -207,5 +217,51 @@
 
     }
     }
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+	
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+	
+}
+
+
+#pragma mark -
+#pragma mark EGORefreshTableHeaderDelegate Methods
+-(void) pullRefresh{
+ 
+    if (_searchKey) {
+        [self loadTutorials:[NSString stringWithFormat:@"http://www.thegradcafe.com/survey/index.php?q=%@",_searchKey]];
+    }else{
+        [self loadTutorials:@"http://www.thegradcafe.com/survey/"];
+    }
+    reloading = NO;
+    [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+    [self.tableView reloadData];
+}
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+	
+	[self performSelector:@selector(pullRefresh) withObject:nil afterDelay:0];
+	
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+	
+	return reloading; // should return if data source model is reloading
+	
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
+	
+	return [NSDate date]; // should return date data source was last changed
+	
+}
 @end

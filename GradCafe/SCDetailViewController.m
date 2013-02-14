@@ -20,7 +20,6 @@
 {
     if (_detailItem != newDetailItem) {
         _detailItem = newDetailItem;
-        
         // Update the view.
         [self configureView];
     }
@@ -42,6 +41,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"Details";
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
 }

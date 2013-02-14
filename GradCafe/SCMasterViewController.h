@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "TFHpple.h"
 #import "GCResult.h"
-
+#import "EGORefreshTableHeaderView.h"
 @class SCDetailViewController;
 
-@interface SCMasterViewController : UITableViewController<UISearchBarDelegate>
+@interface SCMasterViewController : UITableViewController<UISearchBarDelegate, EGORefreshTableHeaderDelegate>{
+    BOOL reloading;
+}
 
 @property (strong, nonatomic) SCDetailViewController *detailViewController;
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) NSString *searchKey;
+@property (strong, nonatomic) EGORefreshTableHeaderView *refreshHeaderView;
 @end
