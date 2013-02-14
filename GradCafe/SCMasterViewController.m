@@ -28,7 +28,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
     _searchKey = [[searchBar text] stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-    NSString *searchURL = [NSString stringWithFormat:@"http://www.thegradcafe.com/survey/index.php?q=%@",_searchKey];
+    NSString *searchURL = [NSString stringWithFormat:@"http://www.thegradcafe.com/survey/index.php?q=%@&pp=250",_searchKey];
     //NSLog([searchBar text]);
     [self loadTutorials:searchURL];
     [searchBar setPlaceholder:_searchKey];
@@ -108,7 +108,7 @@
 - (void)refreshTable:(id)sender
 {
     if (_searchKey) {
-        [self loadTutorials:[NSString stringWithFormat:@"http://www.thegradcafe.com/survey/index.php?q=%@",_searchKey]];
+        [self loadTutorials:[NSString stringWithFormat:@"http://www.thegradcafe.com/survey/index.php?q=%@&pp=250",_searchKey]];
          [self.tableView reloadData];
     }else{
         [self loadTutorials:@"http://www.thegradcafe.com/survey/"];
