@@ -133,6 +133,7 @@
     //NSLog(@"The row is %d", indexPath.row);
     if (indexPath.row !=0) {
         GCResult *object = _objects[indexPath.row-1];
+        cell.detailTextLabel.backgroundColor = [UIColor whiteColor];
         if ([object.decision isEqualToString:@"Accepted"]) {
             cell.detailTextLabel.backgroundColor = [UIColor colorWithRed:152.0/255 green:251.0/255 blue:152.0/255 alpha:0.5];
             //NSLog(@"accepted");

@@ -37,6 +37,7 @@
         self.fieldLabel.text = [result field];
         
     }
+    self.view.backgroundColor = [UIColor whiteColor];
     if ([self.decisionLabel.text isEqualToString:@"Accepted"]) {
         self.view.backgroundColor = [UIColor colorWithRed:0.9 green:1.0 blue:0.9 alpha:1.0];
     }
