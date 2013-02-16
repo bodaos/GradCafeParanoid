@@ -126,7 +126,11 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self loadTutorials: URL];
+    if (_searchKey) {
+        [self loadTutorials:[NSString stringWithFormat:@"http://www.thegradcafe.com/survey/index.php?q=%@&pp=250",_searchKey]];
+    }else{
+        [self loadTutorials:URL];
+    }
 }
 
 - (void)didReceiveMemoryWarning
