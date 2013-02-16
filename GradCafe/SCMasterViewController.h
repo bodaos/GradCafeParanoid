@@ -10,13 +10,19 @@
 #import "TFHpple.h"
 #import "GCResult.h"
 #import "EGORefreshTableHeaderView.h"
+
+
+#define URL @"http://www.thegradcafe.com/survey/"
+
+
 @class SCDetailViewController;
 
-@interface SCMasterViewController : UITableViewController<UISearchBarDelegate, EGORefreshTableHeaderDelegate>{
-    BOOL reloading;
-    int count;
-}
 
+@interface SCMasterViewController : UITableViewController<UISearchBarDelegate, EGORefreshTableHeaderDelegate,NSURLConnectionDataDelegate>
+
+
+@property (nonatomic, assign) BOOL reloading;
+@property (nonatomic, assign) int count;
 @property (strong, nonatomic) SCDetailViewController *detailViewController;
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) NSString *searchKey;

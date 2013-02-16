@@ -10,14 +10,13 @@
 
 #import "SCDetailViewController.h"
 
-@interface SCMasterViewController () {
-    NSMutableArray *_objects;
-}
+@interface SCMasterViewController ()
+
+@property (nonatomic, strong) NSMutableArray *objects;
+@property (nonatomic, strong) NSMutableData *mutableData;
 @end
 
 @implementation SCMasterViewController
-@synthesize searchBar = _searchBar, searchKey = _searchKey;
-@synthesize refreshHeaderView = _refreshHeaderView;
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     if (searchBar.isFirstResponder) {
@@ -32,7 +31,6 @@
     //NSLog([searchBar text]);
     [self loadTutorials:searchURL];
     [searchBar setPlaceholder:_searchKey];
-    [self.tableView reloadData];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
@@ -43,36 +41,54 @@
 
 -(void)loadTutorials:(NSString*) string {
 
-    int count =0;
-    NSURL *url = [NSURL URLWithString:string];
-    NSData *resultsHtmlData = [NSData dataWithContentsOfURL:url];
-     //NSLog([NSString stringWithUTF8String:[resultsHtmlData bytes] ] );
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:string] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
+    (void)[[NSURLConnection alloc] initWithRequest:request delegate:self];
 
-    TFHpple *resultsParser = [TFHpple hppleWithHTMLData:resultsHtmlData];
+}
+
+
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
     
+    [_mutableData appendData:data];
 
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    _mutableData = [[NSMutableData alloc] init];
+}
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    TFHpple *resultsParser = [TFHpple hppleWithHTMLData:_mutableData];
+    
+    
     NSString *resultXpathQueryString = @"//table[@class='results']/tr";
     NSArray *resultsNodes = [resultsParser searchWithXPathQuery:resultXpathQueryString];
     
-
+    
     NSMutableArray *newResults = [[NSMutableArray alloc] initWithCapacity:0];
     for (TFHppleElement *element in resultsNodes) {
-
-       GCResult  *result = [[GCResult alloc] initWithUniversity:[[element firstChild] text] andDecision:nil];
+        
+        GCResult  *result = [[GCResult alloc] initWithUniversity:[[element firstChild] text] andDecision:nil];
         result.field = [[element childAtIndex:1] text];
         result.decision = [[[element childAtIndex:2] childAtIndex:0 ] text];
         result.interaction = [[element childAtIndex:2] text] ;
-        //NSLog(@"%@", result.interaction );
         [newResults addObject:result];
-        count += 1;
     }
-  
-    //NSLog(@"%i", count);
-    _objects = newResults;
-   
+    if (_refreshHeaderView.state == EGOOPullRefreshLoading) {
+        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+    }
     
+    _objects = newResults;
+    [self.tableView reloadData];
 }
 
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    NSLog(@"error loading data");
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -95,8 +111,11 @@
     view.delegate = self;
     [self.tableView addSubview:view];
     _refreshHeaderView = view;
-    [self loadTutorials: @"http://www.thegradcafe.com/survey/"];
-    [self.tableView reloadData];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self loadTutorials: URL];
 }
 
 - (void)didReceiveMemoryWarning
@@ -109,11 +128,10 @@
 {
     if (_searchKey) {
         [self loadTutorials:[NSString stringWithFormat:@"http://www.thegradcafe.com/survey/index.php?q=%@&pp=250",_searchKey]];
-         [self.tableView reloadData];
     }else{
-        [self loadTutorials:@"http://www.thegradcafe.com/survey/"];
-        [self.tableView reloadData];
+        [self loadTutorials:URL];
     }
+
 }
 
 #pragma mark - Table View
@@ -181,31 +199,6 @@
     return NO;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }
-}
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -242,11 +235,9 @@
     if (_searchKey) {
         [self loadTutorials:[NSString stringWithFormat:@"http://www.thegradcafe.com/survey/index.php?q=%@&pp=250",_searchKey]];
     }else{
-        [self loadTutorials:@"http://www.thegradcafe.com/survey/"];
+        [self loadTutorials:URL];
     }
-    reloading = NO;
-    [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
-    [self.tableView reloadData];
+    _reloading = NO;
 }
 
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
@@ -257,7 +248,7 @@
 
 - (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
 	
-	return reloading; // should return if data source model is reloading
+	return _reloading; // should return if data source model is reloading
 	
 }
 
