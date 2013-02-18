@@ -18,11 +18,7 @@
 
 @implementation SCMasterViewController
 
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
-    if (searchBar.isFirstResponder) {
-        [searchBar resignFirstResponder];
-    }
-}
+
 #pragma mark SearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
@@ -35,6 +31,12 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     _searchKey = searchText;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    if (searchBar.isFirstResponder) {
+        [searchBar resignFirstResponder];
+    }
 }
 
 #pragma mark Loading data
