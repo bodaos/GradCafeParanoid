@@ -66,6 +66,7 @@
     if (self) {
         self.title = NSLocalizedString(@"Detail", @"Detail");
     }
+    
     return self;
 }
 							

@@ -12,8 +12,8 @@
 
 @property (strong, nonatomic) id detailItem;
 
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *decisionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *interactionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *fieldLabel;
+@property (strong, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *decisionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *interactionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *fieldLabel;
 @end
