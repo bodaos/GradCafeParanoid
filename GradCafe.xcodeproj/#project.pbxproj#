@@ -21,8 +21,7 @@
 		086495AC16CC9FEB0074CA77 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 086495AB16CC9FEB0074CA77 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
 		086495AE16CCA5A20074CA77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086495AD16CCA5A20074CA77 /* QuartzCore.framework */; };
 		086495B416CCB9E00074CA77 /* load.png in Resources */ = {isa = PBXBuildFile; fileRef = 086495B316CCB9DF0074CA77 /* load.png */; };
-		086495B616CCB9E70074CA77 /* load-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 086495B516CCB9E70074CA77 /* load-small.png */; };
-		086495B816CCBA370074CA77 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 086495B716CCBA370074CA77 /* Default@2x.png */; };
+		086495B616CCB9E70074CA77 /* load-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 086495B516CCB9E70074CA77 /* load-small.png */; };		086495B816CCBA370074CA77 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 086495B716CCBA370074CA77 /* Default@2x.png */; };
 		086495BA16CCBA3C0074CA77 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 086495B916CCBA3C0074CA77 /* Default-568h@2x.png */; };
 		089BF7E116CA094800F5854D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089BF7E016CA094800F5854D /* UIKit.framework */; };
 		089BF7E316CA094800F5854D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089BF7E216CA094800F5854D /* Foundation.framework */; };
@@ -30,6 +29,8 @@
 		089BF7EB16CA094800F5854D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089BF7E916CA094800F5854D /* InfoPlist.strings */; };
 		089BF7ED16CA094800F5854D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 089BF7EC16CA094800F5854D /* main.m */; };
 		089BF7F116CA094800F5854D /* SCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 089BF7F016CA094800F5854D /* SCAppDelegate.m */; };
+		089BF7F316CA094800F5854D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 089BF7F216CA094800F5854D /* Default.png */; };
+		089BF7F516CA094800F5854D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 089BF7F416CA094800F5854D /* Default@2x.png */; };
 		089BF7FA16CA094800F5854D /* SCMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 089BF7F916CA094800F5854D /* SCMasterViewController.m */; };
 		089BF7FD16CA094800F5854D /* SCDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 089BF7FC16CA094800F5854D /* SCDetailViewController.m */; };
 		089BF80016CA094800F5854D /* SCMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089BF7FE16CA094800F5854D /* SCMasterViewController.xib */; };
@@ -41,6 +42,8 @@
 		089BF81816CA0DDD00F5854D /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 089BF81716CA0DDD00F5854D /* libxml2.dylib */; };
 		B039080816CF1AB9006117F3 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B039080616CF1AB9006117F3 /* Icon.png */; };
 		B039080916CF1AB9006117F3 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B039080716CF1AB9006117F3 /* Icon@2x.png */; };
+		B039080B16CF1AC6006117F3 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B039080A16CF1AC6006117F3 /* Icon.png */; };
+		B039080D16CF1AC9006117F3 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B039080C16CF1AC9006117F3 /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +75,8 @@
 		089BF7EE16CA094800F5854D /* GradCafe-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GradCafe-Prefix.pch"; sourceTree = "<group>"; };
 		089BF7EF16CA094800F5854D /* SCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCAppDelegate.h; sourceTree = "<group>"; };
 		089BF7F016CA094800F5854D /* SCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCAppDelegate.m; sourceTree = "<group>"; };
+		089BF7F216CA094800F5854D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		089BF7F416CA094800F5854D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		089BF7F816CA094800F5854D /* SCMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCMasterViewController.h; sourceTree = "<group>"; };
 		089BF7F916CA094800F5854D /* SCMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCMasterViewController.m; sourceTree = "<group>"; };
 		089BF7FB16CA094800F5854D /* SCDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCDetailViewController.h; sourceTree = "<group>"; };
@@ -89,6 +94,8 @@
 		089BF81716CA0DDD00F5854D /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		B039080616CF1AB9006117F3 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		B039080716CF1AB9006117F3 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		B039080A16CF1AC6006117F3 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		B039080C16CF1AC9006117F3 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +152,8 @@
 		089BF7D416CA094700F5854D = {
 			isa = PBXGroup;
 			children = (
+				B039080C16CF1AC9006117F3 /* Icon@2x.png */,
+				B039080A16CF1AC6006117F3 /* Icon.png */,
 				089BF81716CA0DDD00F5854D /* libxml2.dylib */,
 				089BF7E616CA094800F5854D /* GradCafe */,
 				089BF7DF16CA094800F5854D /* Frameworks */,
@@ -204,6 +213,8 @@
 				089BF7E916CA094800F5854D /* InfoPlist.strings */,
 				089BF7EC16CA094800F5854D /* main.m */,
 				089BF7EE16CA094800F5854D /* GradCafe-Prefix.pch */,
+				089BF7F216CA094800F5854D /* Default.png */,
+				089BF7F416CA094800F5854D /* Default@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -283,6 +294,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				089BF7EB16CA094800F5854D /* InfoPlist.strings in Resources */,
+				089BF7F316CA094800F5854D /* Default.png in Resources */,
+				089BF7F516CA094800F5854D /* Default@2x.png in Resources */,
 				089BF80016CA094800F5854D /* SCMasterViewController.xib in Resources */,
 				089BF80316CA094800F5854D /* SCDetailViewController.xib in Resources */,
 				0864959D16CC9FDB0074CA77 /* blackArrow.png in Resources */,
@@ -302,6 +315,8 @@
 				086495BA16CCBA3C0074CA77 /* Default-568h@2x.png in Resources */,
 				B039080816CF1AB9006117F3 /* Icon.png in Resources */,
 				B039080916CF1AB9006117F3 /* Icon@2x.png in Resources */,
+				B039080B16CF1AC6006117F3 /* Icon.png in Resources */,
+				B039080D16CF1AC9006117F3 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +399,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FD58931F-C3F5-4528-890B-5BBB7D0AC12B";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -426,6 +442,8 @@
 				GCC_PREFIX_HEADER = "GradCafe/GradCafe-Prefix.pch";
 				INFOPLIST_FILE = "GradCafe/GradCafe-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "FD58931F-C3F5-4528-890B-5BBB7D0AC12B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FD58931F-C3F5-4528-890B-5BBB7D0AC12B";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -440,6 +458,8 @@
 				INFOPLIST_FILE = "GradCafe/GradCafe-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ACB076DA-FE83-4C90-8C9D-056BF04B5B4E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ACB076DA-FE83-4C90-8C9D-056BF04B5B4E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
